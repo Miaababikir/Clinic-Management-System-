@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Doctors;
+namespace App\Http\Controllers\Patients;
 
-use App\Doctor;
+use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
-use PhpParser\Comment\Doc;
 
-class DoctorController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,8 @@ class DoctorController extends Controller
     public function index()
     {
         //
-        $doctors = Doctor::all();
-        return view('admin.doctors.index')->withDoctors($doctors);
+        $patients = Patient::all();
+        return view('admin.patients.index')->withPatients($patients);
     }
 
     /**
@@ -30,7 +28,6 @@ class DoctorController extends Controller
     public function create()
     {
         //
-        return view('admin.doctors.create');
     }
 
     /**
@@ -41,26 +38,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'full_name' => 'required|max:30',
-            'username' => 'required|max:30',
-            'password' => 'required|min:6',
-            'gender' => 'required',
-            'image' => 'required',
-            'speciality' => 'required',
-            'description' => 'required',
-        ]);
-
-        $data = $request->all();
-        $data['password'] = bcrypt($data['password']);
-        $data['profile_image'] = 'images/' . $data['image']->store('', 'images');
-
-        Doctor::create($data);
-
-        Session::flash('success', 'Doctor account created successfully');
-
-        return redirect()->route('doctors.create');
-
+        //
     }
 
     /**
@@ -107,11 +85,4 @@ class DoctorController extends Controller
     {
         //
     }
-
-    public function getDays($id)
-    {
-        $doctor = Doctor::findOrFail($id);
-        return $doctor->days->pluck('name');
-    }
-
 }

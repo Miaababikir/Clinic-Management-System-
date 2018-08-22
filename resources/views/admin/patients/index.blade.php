@@ -11,11 +11,11 @@
 
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">All Doctors</h4></div>
+            <h4 class="page-title">All Patients</h4></div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <ol class="breadcrumb">
                 <li><a href="{{ route('admin') }}">Hospital</a></li>
-                <li class="active">Add Doctor</li>
+                <li class="active">All Patients</li>
             </ol>
         </div>
         <!-- /.col-lg-12 -->
@@ -23,23 +23,27 @@
 
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title">All Doctors Details</h3>
+            <h3 class="box-title">All Patients Details</h3>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Doctor Name</th>
-                        <th>Username</th>
-                        <th>Speciality</th>
+                        <th>Patient Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="doctor in doctors">
-                        <td>@{{ doctor.id }}</td>
-                        <td>@{{ doctor.full_name }}</td>
-                        <td>@@{{ doctor.username }}</td>
-                        <td>@{{ doctor.speciality }}</td>
+                    <tr v-for="patient in patients">
+                        <td>@{{ patient.id }}</td>
+                        <td>@{{ patient.name }}</td>
+                        <td>@{{ patient.phone }}</td>
+                        <td>@{{ patient.email }}</td>
+                        <td class="text-nowrap">
+                            <a href="#" data-toggle="tooltip" data-original-title="Show"> <i class="fa fa-folder-open text-inverse m-r-10"></i> </a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -58,7 +62,7 @@
         let app = new Vue({
             el: '#app',
             data: {
-                doctors: {!! $doctors !!},
+                patients: {!! $patients !!},
             },
             mounted() {
                 $('.table').dataTable();

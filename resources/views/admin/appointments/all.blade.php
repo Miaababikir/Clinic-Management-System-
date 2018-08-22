@@ -29,17 +29,24 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Doctor Name</th>
-                        <th>Username</th>
-                        <th>Speciality</th>
+                        <th>Patient Name</th>
+                        <th>Date</th>
+                        <th>Confirmation</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="doctor in doctors">
-                        <td>@{{ doctor.id }}</td>
-                        <td>@{{ doctor.full_name }}</td>
-                        <td>@@{{ doctor.username }}</td>
-                        <td>@{{ doctor.speciality }}</td>
+                    <tr v-for="appointment in appointments">
+                        <td>@{{ appointment.id }}</td>
+                        <td>@{{ appointment.patient }}</td>
+                        <td>@{{ appointment.start }}</td>
+                        <td>
+                            <span class="label label-success" v-if="appointment.activation == 1">Confirmed</span>
+                            <span class="label label-danger" v-else>Not Confirmed</span>
+                        </td>
+                        <td class="text-nowrap">
+                            <a href="#" data-toggle="tooltip" data-original-title="Show"> <i class="fa fa-external-link text-inverse m-r-10"></i> </a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -58,7 +65,7 @@
         let app = new Vue({
             el: '#app',
             data: {
-                doctors: {!! $doctors !!},
+                appointments: {!! $appointments !!},
             },
             mounted() {
                 $('.table').dataTable();

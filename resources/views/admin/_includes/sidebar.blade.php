@@ -12,25 +12,20 @@
                             class="hide-menu"> Appointment <span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{ route('appointments.index') }}">Doctor Schedule</a></li>
-                    <li><a href="book-appointment.html">Book Appointment</a></li>
+                    <li><a href="{{ route('appointments.all') }}">Doctor Appointments</a></li>
                 </ul>
             </li>
             <li><a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span
                             class="hide-menu"> Doctors <span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="doctors.html">All Doctors</a></li>
+                    <li><a href="{{ route('doctors.index') }}">All Doctors</a></li>
                     <li><a href="{{ route('doctors.create') }}">Add Doctor</a></li>
-                    <li><a href="edit-doctor.html">Edit Doctor</a></li>
-                    <li><a href="doctor-profile.html">Doctor Profile</a></li>
                 </ul>
             </li>
             <li><a href="javascript:void(0);" class="waves-effect"><i class="icon-people p-r-10"></i> <span
                             class="hide-menu"> Patients <span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="patients.html">All Patients</a></li>
-                    <li><a href="add-patient.html">Add Patient</a></li>
-                    <li><a href="edit-patient.html">Edit Patient</a></li>
-                    <li><a href="patient-profile.html">Patient Profile</a></li>
                 </ul>
             </li>
             <li><a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span

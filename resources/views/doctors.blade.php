@@ -14,7 +14,7 @@
                     <div class="col-md-4 fh5co-staff text-center animate-box">
                         <img src="{{ $doctor->profile_image }}" alt="Free HTML5 Bootstrap Template"
                              class="img-responsive">
-                        <h3>{{ $doctor->name }}</h3>
+                        <h3>{{ $doctor->full_name }}</h3>
                         <h4>{{ $doctor->speciality }}</h4>
                         <p>{{ $doctor->description }}</p>
                         <a href="{{ route('appointments') }}" class="btn btn-primary">Make an appointment</a>

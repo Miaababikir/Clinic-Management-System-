@@ -7,6 +7,7 @@ use App\Event;
 use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
 class AppointmentController extends Controller
@@ -48,6 +49,7 @@ class AppointmentController extends Controller
             $event->doctor_id = $request->doctor_id;
             $event->patient_id = $patient->id;
             $event->token = uniqid();
+            $event->activation = Event::NOT_CONFIRMED;
             $event->save();
 
             Session::flash('success', 'Your appointment have been added successfully!');
@@ -104,6 +106,34 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getAppointment(Request $request)
+    {
+        $code = $request->code;
+        $appointment = Event::where('token', $code)->first();
+
+        return $appointment;
+    }
+
+    public function confirmation($id)
+    {
+        $appointment = Event::findOrFail($id);
+
+        $appointment->activation = Event::CONFIRMED;
+        $appointment->save();
+
+        return $appointment;
+    }
+
+    public function cancel($id)
+    {
+        $appointment = Event::findOrFail($id);
+
+        $appointment->activation = Event::NOT_CONFIRMED;
+        $appointment->save();
+
+        return $appointment;
     }
 
     public function code($code)
